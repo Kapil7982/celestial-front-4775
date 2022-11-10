@@ -45,6 +45,12 @@ public class BankAccount {
 	public void setBalance(Double balance) {
 		this.balance = balance;
 	}
+	public Wallet getWallet() {
+		return wallet;
+	}
+	public void setWallet(Wallet wallet) {
+		this.wallet = wallet;
+	}
 	
 	
 	
