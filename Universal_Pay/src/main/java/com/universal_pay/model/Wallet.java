@@ -1,12 +1,15 @@
 package com.universal_pay.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -19,6 +22,9 @@ public class Wallet {
 	
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "wallet")
 	private Customer customer;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "wallet")
+	private List<BankAccount> bankAccounts = new ArrayList<>();
 	
 	public Wallet() {
 		super();
