@@ -2,10 +2,12 @@ package com.universal_pay.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Wallet {
@@ -14,6 +16,9 @@ public class Wallet {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int walledId;
 	private BigDecimal balance;
+	
+	@OneToOne(cascade = CascadeType.ALL, mappedBy = "wallet")
+	private Customer customer;
 	
 	public Wallet() {
 		super();

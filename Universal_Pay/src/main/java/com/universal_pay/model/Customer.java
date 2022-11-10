@@ -1,7 +1,9 @@
 package com.universal_pay.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -21,6 +23,9 @@ public class Customer {
 	@NotBlank
 	@Size(min=4, max=10)
 	private String password;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Wallet wallet;
 	
 	public Customer() {
 		// TODO Auto-generated constructor stub
@@ -55,6 +60,15 @@ public class Customer {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+
+	public Wallet getWallet() {
+		return wallet;
+	}
+
+	public void setWallet(Wallet wallet) {
+		this.wallet = wallet;
 	}
 
 	@Override
