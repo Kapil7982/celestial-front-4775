@@ -2,7 +2,9 @@ package com.universal_pay.model;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -11,6 +13,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Cascade;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Wallet {
@@ -23,8 +29,10 @@ public class Wallet {
 	@OneToOne(cascade = CascadeType.ALL, mappedBy = "wallet")
 	private Customer customer;
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "wallet")
-	private List<BankAccount> bankAccounts = new ArrayList<>();
+//	@Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "wallet")
+	@JsonIgnore
+	private Set<BankAccount> bankAccounts = new HashSet<>();
 	
 	public Wallet() {
 		super();
@@ -50,12 +58,26 @@ public class Wallet {
 	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
+	
+	
 
-	@Override
-	public String toString() {
-		return "Wallet [walledId=" + walledId + ", balance=" + balance + "]";
+	public Customer getCustomer() {
+		return customer;
 	}
 
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Set<BankAccount> getBankAccounts() {
+		return bankAccounts;
+	}
+
+	public void setBankAccounts(Set<BankAccount> bankAccounts) {
+		this.bankAccounts = bankAccounts;
+	}
+
+	
 	
 	
 	
