@@ -14,8 +14,7 @@ public class BeneficiaryDetails {
 	
 //	private Integer beneficiaryId;
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer mobileNumber;
+	private String mobileNumber;
 	private String name;
 	
 	
@@ -26,7 +25,7 @@ public class BeneficiaryDetails {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public BeneficiaryDetails(Integer mobileNumber, String name, int beneficiaryId, Wallet wallet) {
+	public BeneficiaryDetails(String mobileNumber, String name, int beneficiaryId, Wallet wallet) {
 		super();
 		this.mobileNumber = mobileNumber;
 		this.name = name;
@@ -44,11 +43,11 @@ public class BeneficiaryDetails {
 //		this.beneficiaryId = beneficiaryId;
 //	}
 
-	public Integer getMobileNumber() {
+	public String getMobileNumber() {
 		return mobileNumber;
 	}
 
-	public void setMobileNumber(Integer mobileNumber) {
+	public void setMobileNumber(String mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 

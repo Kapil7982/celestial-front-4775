@@ -34,7 +34,7 @@ public class IBenificiaryController {
 		return new ResponseEntity<>(deleteBenificiary,HttpStatus.OK);
 	}
 	@GetMapping("/viewBenificiary/{mob}")
-	public ResponseEntity<BeneficiaryDetails> viewBenificiaryById(@Valid @PathVariable("mob")Integer mob ) throws BenificiaryException{
+	public ResponseEntity<BeneficiaryDetails> viewBenificiaryById(@Valid @PathVariable("mob")String mob ) throws BenificiaryException{
 		BeneficiaryDetails benificiary=ibservice.viewBenificiary(mob);
 		return new ResponseEntity<BeneficiaryDetails>(benificiary,HttpStatus.OK);
 	}
