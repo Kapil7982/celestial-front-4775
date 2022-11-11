@@ -71,10 +71,6 @@ public class Customer {
 		this.wallet = wallet;
 	}
 
-	@Override
-	public String toString() {
-		return "Customer [name=" + name + ", mobileNumber=" + mobileNumber + ", password=" + password + "]";
-	}
 	
 	
 
