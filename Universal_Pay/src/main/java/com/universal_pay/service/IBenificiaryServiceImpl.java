@@ -19,8 +19,7 @@ public class IBenificiaryServiceImpl implements IBenificiaryService{
 	WalletRepository walletRepo;
 	@Autowired
 	IBenificiaryRepository ibRepo;
-	@Autowired
-	 WalletRepository wrepo;
+
 	@Override
 	public BeneficiaryDetails addBenificiary(BeneficiaryDetails bd) throws BenificiaryException{
 		Wallet wallet = bd.getWallet();
