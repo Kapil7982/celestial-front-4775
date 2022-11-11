@@ -6,6 +6,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class BankAccount {
@@ -14,6 +17,9 @@ public class BankAccount {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer accountNo;
 	private String ifscCode;
+	@NotBlank
+	@NotEmpty
+	@NotNull
 	private String bankName;
 	private Double balance;
 	
