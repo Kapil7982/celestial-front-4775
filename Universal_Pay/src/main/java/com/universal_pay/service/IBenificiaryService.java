@@ -13,6 +13,6 @@ import com.universal_pay.model.Customer;
 public interface IBenificiaryService {
 	public BeneficiaryDetails addBenificiary(BeneficiaryDetails bd)throws BenificiaryException;
 	public BeneficiaryDetails deleteBenificiary(BeneficiaryDetails bd) throws BenificiaryException;
-	public BeneficiaryDetails viewBenificiary (Integer mob) throws BenificiaryException;
+	public BeneficiaryDetails viewBenificiary (String mob) throws BenificiaryException;
 	public List<BeneficiaryDetails> viewAllBeneficiary(Customer customer);
 }
