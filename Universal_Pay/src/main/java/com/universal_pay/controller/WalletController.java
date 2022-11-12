@@ -1,5 +1,6 @@
 package com.universal_pay.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.universal_pay.exception.CustomerException;
 import com.universal_pay.model.BankAccount;
 import com.universal_pay.model.Customer;
 import com.universal_pay.model.Wallet;
@@ -27,10 +29,12 @@ public class WalletController {
 	WalletService walletService;
 	
 	
-//	@PostMapping("/createAccount")
-//	public Customer createAccount(@RequestBody BankAccount acc) throws Exception{
-//		return walletService.createAccount(acc);
-//	}
+	@PostMapping("/createWallet/{name}/{mobileno}/{amount}")
+	public Customer createAccount(@PathVariable("name") String name, @PathVariable("mobileno") String mobileno,@PathVariable("amount") BigDecimal amount) throws CustomerException {	
+
+		Customer c = walletService.createAccount(name, mobileno, amount);
+        return c;
+		}
 	
 	@GetMapping("/showBalance/{mobileno}")
 	public Customer showBalance (@PathVariable String mobileno) throws Exception{
