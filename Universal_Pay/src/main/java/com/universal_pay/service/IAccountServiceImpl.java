@@ -31,7 +31,7 @@ public class IAccountServiceImpl implements IAccountService{
 		Wallet w = bacc.getWallet();
 		if(w != null) {
 			
-			Optional<Wallet> optWallet = wRepo.findById(w.getWalledId());
+			Optional<Wallet> optWallet = wRepo.findById(w.getWalletId());
 			
 			if(optWallet.isPresent()) {
 				Wallet wallet = optWallet.get();
@@ -72,11 +72,11 @@ public class IAccountServiceImpl implements IAccountService{
 
 	@Override
 	public Set<BankAccount> viewAllAccounts(Wallet wallet) throws WalletException {
-		Optional<Wallet> w = wRepo.findById(wallet.getWalledId());
+		Optional<Wallet> w = wRepo.findById(wallet.getWalletId());
 		
 		if(w.isPresent()) {
 			
-			return w.get().getBankAccounts();
+			return (Set<BankAccount>) w.get().getBankAccounts();
 			
 		}else {
 			throw new WalletException("Invalid wallet id..");
