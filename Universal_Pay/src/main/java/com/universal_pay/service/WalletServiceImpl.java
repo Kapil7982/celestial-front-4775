@@ -140,4 +140,12 @@ public class WalletServiceImpl implements WalletService{
 		return wallet;
 	}
 
+	@Override
+	public Customer createAccount(String name, String mobileno, BigDecimal amount) throws CustomerException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
 }

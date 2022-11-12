@@ -27,10 +27,10 @@ public class WalletController {
 	WalletService walletService;
 	
 	
-	@PostMapping("/createAccount")
-	public Customer createAccount(@RequestBody BankAccount acc) throws Exception{
-		return walletService.createAccount(acc);
-	}
+//	@PostMapping("/createAccount")
+//	public Customer createAccount(@RequestBody BankAccount acc) throws Exception{
+//		return walletService.createAccount(acc);
+//	}
 	
 	@GetMapping("/showBalance/{mobileno}")
 	public Customer showBalance (@PathVariable String mobileno) throws Exception{
