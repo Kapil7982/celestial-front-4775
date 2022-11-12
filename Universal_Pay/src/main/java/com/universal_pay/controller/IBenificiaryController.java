@@ -20,7 +20,7 @@ import java.util.List;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
-@RequestMapping("/pwa-payment")
+@RequestMapping("/pwa-benificiary")
 public class IBenificiaryController {
 	@Autowired
 	private IBenificiaryService ibservice;
