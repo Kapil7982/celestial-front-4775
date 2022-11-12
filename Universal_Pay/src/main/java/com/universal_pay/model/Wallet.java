@@ -33,7 +33,7 @@ public class Wallet {
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<BankAccount> bankAccounts;
 	
-	@OneToMany(mappedBy = "wallet" , fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "wallet" , fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Transaction> transcations;
 	
