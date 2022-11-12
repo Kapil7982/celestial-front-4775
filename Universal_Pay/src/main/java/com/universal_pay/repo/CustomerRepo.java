@@ -11,7 +11,7 @@ public interface CustomerRepo extends JpaRepository<Customer, String> {
 
 	public Customer findBymobileNumber(String mobileNo) ;
 	
-	@Query("from Customer where wallet = from Wallet where walletId = ?1")
-	public Customer getByWallet(Integer walletId);
+//	@Query("from Customer where wallet = from Wallet where walletId = ?1")
+//	public Customer getByWallet(Integer walletId);
 	
 }
