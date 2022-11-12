@@ -134,15 +134,32 @@ public class WalletServiceImpl implements WalletService{
 
 	@Override
 	public Wallet addMoney(Wallet wallet, double amount) throws Exception {
-		Wallet  bean = null;
-		try {
-			bean = walletRepo.findById(wallet.getWalletId()).get();
-		}
-		catch(Exception e) {
+//		Wallet  bean = null;
+//		try {
+//			bean = walletRepo.findById(wallet.getWalletId()).get();
+//		}
+//		catch(Exception e) {
+//			throw new Exception("Wallet details not found!");
+//		}
+		Optional<Wallet> w = walletRepo.findById(wallet.getWalletId());
+		if(w.isPresent()) {
+			
+
+			Wallet w1 = w.get();
+			
+			w1.setBalance(w1.getBalance().add(new BigDecimal(amount)));
+			
+			return walletRepo.save(w1);
+			
+			
+			
+		}else {
 			throw new Exception("Wallet details not found!");
+
+			
 		}
-		wallet.setBalance(wallet.getBalance().add(new BigDecimal(amount)));
-		return wallet;
+		
+
 	}
 
 	

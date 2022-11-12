@@ -29,7 +29,7 @@ public class WalletController {
 	WalletService walletService;
 	
 	
-	@PostMapping("/createAccount")
+	@PostMapping("/createAccount/{name}/{mobileno}/{amount}")
 	public Customer createAccount(@PathVariable("name") String name, @PathVariable("mobileno") String mobileno,@PathVariable("amount") BigDecimal amount) throws CustomerException {	
 
 		Customer c = walletService.createAccount(name, mobileno, amount);
