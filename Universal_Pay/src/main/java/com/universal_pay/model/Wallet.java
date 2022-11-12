@@ -27,7 +27,7 @@ public class Wallet {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int walletId;
-	private Double balance;
+	private BigDecimal balance;
 	
 	@OneToMany(mappedBy = "wallet" , fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
@@ -49,7 +49,7 @@ public class Wallet {
 		super();
 	}
 
-	public Wallet(int walletId, Double balance, List<BankAccount> bankAccounts, List<Transaction> transcations,
+	public Wallet(int walletId, BigDecimal balance, List<BankAccount> bankAccounts, List<Transaction> transcations,
 			List<BillPayment> billPayments, List<BeneficiaryDetails> benificiaryDetails) {
 		super();
 		this.walletId = walletId;
@@ -68,11 +68,11 @@ public class Wallet {
 		this.walletId = walletId;
 	}
 
-	public Double getBalance() {
+	public BigDecimal getBalance() {
 		return balance;
 	}
 
-	public void setBalance(Double balance) {
+	public void setBalance(BigDecimal balance) {
 		this.balance = balance;
 	}
 
