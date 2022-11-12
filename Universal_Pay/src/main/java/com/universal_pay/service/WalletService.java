@@ -10,7 +10,7 @@ import com.universal_pay.model.Wallet;
 
 public interface WalletService {
 	
-//	public Customer createAccount(BankAccount acc) throws CustomerException;
+	public Customer createAccount(String name, String mobileno, BigDecimal amount) throws CustomerException;
 	
 	public Customer showBalance (String mobileno) throws Exception;
 	
