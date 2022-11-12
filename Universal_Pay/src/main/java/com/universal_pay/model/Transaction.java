@@ -1,100 +1,120 @@
 package com.universal_pay.model;
 
-import javax.persistence.CascadeType;
+import java.time.LocalDate;
+
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+/*
+
+
+{
+"transactionId" : "2380",
+"transactionType" : "shopping"
+
+}
+
+
+*/
 
 @Entity
 public class Transaction {
+	
 
-	    @Id
-	    @GeneratedValue(strategy =GenerationType.AUTO ) 
-		private int transactionId;
-		private String transactionType;
-		@JsonFormat(pattern="yyyy-mm-dd",shape=Shape.STRING)
-		private String transactionDate;
-	   
-		@ManyToOne(cascade = CascadeType.ALL)
-		public Wallet wallet;
-		private double amount;
-		private String description;
-		
-		public Transaction() {
-			super();
-			// TODO Auto-generated constructor stub
-		}
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int transactionId;
+	private String transactionType;
+	private LocalDate transactionDate;
+	
+	@ManyToOne(fetch = FetchType.LAZY )
+	@JoinColumn(name = "wallet_id", referencedColumnName = "walletId")
+	private Wallet wallet;
+	
+	private double amount;
+	private String description;
+	
+	@ManyToOne(fetch = FetchType.LAZY )
+	@JoinColumn(name = "account_no", referencedColumnName = "accountNo")
+	private BankAccount bankAccount;
 
-		public Transaction(int transactionId, String transactionType, String transactionDate, Wallet wallet,
-				double amount, String description) {
-			super();
-			this.transactionId = transactionId;
-			this.transactionType = transactionType;
-			this.transactionDate = transactionDate;
-			this.wallet = wallet;
-			this.amount = amount;
-			this.description = description;
-		}
+	public Transaction() {
+		super();
+	}
 
-		public int getTransactionId() {
-			return transactionId;
-		}
+	public Transaction(int transactionId, String transactionType, LocalDate transactionDate, Wallet wallet, double amount,
+			String description, BankAccount bankAccount) {
+		super();
+		this.transactionId = transactionId;
+		this.transactionType = transactionType;
+		this.transactionDate = transactionDate;
+		this.wallet = wallet;
+		this.amount = amount;
+		this.description = description;
+		this.bankAccount = bankAccount;
+	}
 
-		public void setTransactionId(int transactionId) {
-			this.transactionId = transactionId;
-		}
+	public int getTransactionId() {
+		return transactionId;
+	}
 
-		public String getTransactionType() {
-			return transactionType;
-		}
+	public void setTransactionId(int transactionId) {
+		this.transactionId = transactionId;
+	}
 
-		public void setTransactionType(String transactionType) {
-			this.transactionType = transactionType;
-		}
+	public String getTransactionType() {
+		return transactionType;
+	}
 
-		public String getTransactionDate() {
-			return transactionDate;
-		}
+	public void setTransactionType(String transactionType) {
+		this.transactionType = transactionType;
+	}
 
-		public void setTransactionDate(String transactionDate) {
-			this.transactionDate = transactionDate;
-		}
+	public LocalDate getTransactionDate() {
+		return transactionDate;
+	}
 
-		public Wallet getWallet() {
-			return wallet;
-		}
+	public void setTransactionDate(LocalDate transactionDate) {
+		this.transactionDate = transactionDate;
+	}
 
-		public void setWallet(Wallet wallet) {
-			this.wallet = wallet;
-		}
+	public Wallet getWallet() {
+		return wallet;
+	}
 
-		public double getAmount() {
-			return amount;
-		}
+	public void setWallet(Wallet wallet) {
+		this.wallet = wallet;
+	}
 
-		public void setAmount(double amount) {
-			this.amount = amount;
-		}
+	public double getAmount() {
+		return amount;
+	}
 
-		public String getDescription() {
-			return description;
-		}
+	public void setAmount(double amount) {
+		this.amount = amount;
+	}
 
-		public void setDescription(String description) {
-			this.description = description;
-		}
+	public String getDescription() {
+		return description;
+	}
 
-		@Override
-		public String toString() {
-			return "Transaction [transactionId=" + transactionId + ", transactionType=" + transactionType
-					+ ", transactionDate=" + transactionDate + ", wallet=" + wallet + ", amount=" + amount
-					+ ", description=" + description + "]";
-		}
-		
-		
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public BankAccount getBankAccount() {
+		return bankAccount;
+	}
+
+	public void setBankAccount(BankAccount bankAccount) {
+		this.bankAccount = bankAccount;
+	}
+	
+	
 }
