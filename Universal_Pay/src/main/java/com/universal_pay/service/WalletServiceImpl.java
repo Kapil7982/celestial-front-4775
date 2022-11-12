@@ -35,23 +35,28 @@ public class WalletServiceImpl implements WalletService{
 	@Autowired
 	IUserRepo iUserRepo;
 
-//	@Override
-//	public Customer createAccount(BankAccount acc) throws CustomerException {
-//		
-//		Customer customer = null;
-//		iAccountRepository.saveAndFlush(acc);
-//		Optional<Customer> opt =  Optional.of(customerRepo.getByWallet(acc.getWallet().getWalletId()));
-//		
-//		if(opt.isPresent())
-//		{
-//			customer = opt.get();
-//			return customer;
-//		}
-//		else 
-//			throw new CustomerException("Customer not found");
-//		
-//		
-//	}
+	@Override
+	public Customer createAccount(String name, String mobileno, BigDecimal amount) throws CustomerException {
+
+
+		Optional<Customer> customer = customerRepo.findById(mobileno);
+		
+		if (!customer.isPresent()) {
+			throw new CustomerException("No customer found for the mobile no :"+mobileno);		
+		}
+		else if (customer.get().getWallet() == null) {
+			Wallet w = new Wallet();
+			w.setBalance(amount);
+			walletRepo.save(w);
+			customer.get().setWallet(w);
+			iUserRepo.save(customer.get());
+			return customer.get();
+		} 
+		else {
+			throw new CustomerException("Wallet is already Present for the mobileno");
+		}
+	}
+
 
 	@Override
 	public Customer showBalance(String mobileno) throws Exception {
@@ -140,12 +145,7 @@ public class WalletServiceImpl implements WalletService{
 		return wallet;
 	}
 
-	@Override
-	public Customer createAccount(String name, String mobileno, BigDecimal amount) throws CustomerException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	
 
 }
