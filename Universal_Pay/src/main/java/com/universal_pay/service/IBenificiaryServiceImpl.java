@@ -22,10 +22,11 @@ public class IBenificiaryServiceImpl implements IBenificiaryService{
 
 	@Override
 	public BeneficiaryDetails addBenificiary(BeneficiaryDetails bd) throws BenificiaryException{
-		if(ibRepo.findById(bd.getMobileNumber()).isEmpty()) {
+		System.out.println(bd.getMobileNumber()+"*************");
+		if(ibRepo.findById(bd.getMobileNumber()) != null) {
 			
-			Wallet wallet = bd.getWallet();
-			wallet.getBenificiaryDetails().add(bd);
+//			Wallet wallet = bd.getWallet();
+//			wallet.getBenificiaryDetails().add(bd);
 		    return ibRepo.save(bd);
 		}else {
 				throw new BenificiaryException("Beneficiary already exists");

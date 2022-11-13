@@ -1,5 +1,6 @@
 package com.universal_pay.service;
 
+import java.lang.StackWalker.Option;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
@@ -54,20 +55,28 @@ public class IAccountServiceImpl implements IAccountService{
 	}
 
 	@Override
-	public Wallet removeAccount(BankAccount bacc) throws AccountException {
+	public Wallet removeAccount(Integer walletId, Integer bankAccId) throws AccountException {
 		
-		BankAccount bAccount = null;
-		
-		Optional<BankAccount> optAccount = aRepo.findById(bacc.getAccountNo());
-		
-		if(optAccount.isPresent()) {
-			bAccount = optAccount.get();
-			aRepo.delete(bAccount);
+		Wallet wallet  = wRepo.findById(walletId).orElseThrow(()-> new AccountException("Wallet not found"));
+		for(BankAccount account: wallet.getBankAccounts()) {
+			if(account.getAccountNo().equals(bankAccId)) {
+				aRepo.delete(account);
+				break;
+			}
 		}
-		else {
-			throw new AccountException("No account found..");
-		}
-		return bAccount.getWallet();
+		return wallet;
+//		BankAccount bAccount = null;
+//		
+//		Optional<BankAccount> optAccount = aRepo.findById(bacc.getAccountNo());
+//		
+//		if(optAccount.isPresent()) {
+//			bAccount = optAccount.get();
+//			aRepo.delete(bAccount);
+//		}
+//		else {
+//			throw new AccountException("No account found..");
+//		}
+//		return bAccount.getWallet();
 	}
 
 	@Override
@@ -82,6 +91,9 @@ public class IAccountServiceImpl implements IAccountService{
 			throw new WalletException("Invalid wallet id..");
 		}
 	}
+
+	
+
 
 
 

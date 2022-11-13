@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.universal_pay.exception.LoginException;
@@ -26,6 +27,16 @@ public class LoginController {
 		String str = logService.logIntoAccount(dto);
 		
 		return new ResponseEntity<String>(str,HttpStatus.ACCEPTED);
+		
+	}
+	
+	@PostMapping("/logout")
+	public ResponseEntity<String> logoutFromAccountHandler(@RequestParam String key)throws LoginException{
+		String str = logService.logoutFromAccount(key);
+		
+		return new ResponseEntity<String>(str,HttpStatus.OK);
+		
+		
 		
 	}
 

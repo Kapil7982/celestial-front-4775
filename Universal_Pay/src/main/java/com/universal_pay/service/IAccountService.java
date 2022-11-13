@@ -12,7 +12,9 @@ public interface IAccountService {
 	
 	public Wallet addAccount(BankAccount bacc) throws AccountException,WalletException;
 	
-	public Wallet removeAccount(BankAccount bacc) throws AccountException;
+	public Wallet removeAccount(Integer walletId, Integer bankAccId) throws AccountException;
+	
+//	public Wallet removeAccount(Integer accNo)throws AccountException;
 	
 //	public BankAccount viewAccount(Wallet wallet) throws WalletException;
 	

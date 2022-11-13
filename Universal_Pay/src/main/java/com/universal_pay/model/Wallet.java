@@ -30,10 +30,10 @@ public class Wallet {
 	private BigDecimal balance;
 	
 	@OneToMany(mappedBy = "wallet" , fetch = FetchType.EAGER)
-	@Fetch(value = FetchMode.SUBSELECT)
+//	@Fetch(value = FetchMode.SUBSELECT)
 	private List<BankAccount> bankAccounts;
 	
-	@OneToMany(cascade = CascadeType.MERGE, mappedBy = "wallet" , fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.PERSIST, mappedBy = "wallet" , fetch = FetchType.EAGER)
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Transaction> transcations;
 	

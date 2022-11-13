@@ -2,19 +2,16 @@ package com.universal_pay.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
-
-import org.hibernate.annotations.ManyToAny;
+import javax.validation.constraints.Size;
 
 @Entity
 public class BeneficiaryDetails {
 	
 
 	@Id
+//	@Size(min = 8,max = 12)
 	private String mobileNumber;
 	
 	
@@ -22,7 +19,7 @@ public class BeneficiaryDetails {
 	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	Wallet wallet;
+	private Wallet wallet;
 	
 	public BeneficiaryDetails() {
 		// TODO Auto-generated constructor stub

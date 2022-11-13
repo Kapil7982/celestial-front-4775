@@ -25,7 +25,7 @@ public class IBenificiaryController {
 	@Autowired
 	private IBenificiaryService ibservice;
 	
-	@PostMapping("/addBenificiary")
+	@PostMapping("/addBenificiary") 
 	public ResponseEntity<BeneficiaryDetails> registerBenificiary(@Valid @RequestBody BeneficiaryDetails bd) throws BenificiaryException{
 		BeneficiaryDetails benificiary= ibservice.addBenificiary(bd);
 		return new ResponseEntity<>(benificiary,HttpStatus.CREATED);
