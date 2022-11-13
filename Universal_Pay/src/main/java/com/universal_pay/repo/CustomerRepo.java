@@ -7,9 +7,10 @@ import org.springframework.stereotype.Repository;
 import com.universal_pay.model.Customer;
 
 @Repository
-public interface CustomerRepo extends JpaRepository<Customer, String> {
+public interface CustomerRepo extends JpaRepository<Customer,String> {
 
-	public Customer findBymobileNumber(String mobileNo) ;
+	public Customer findBymobileNumber(String mobileNumber);
+	
 	
 
 //	@Query("from Customer where wallet = from Wallet where walletId = ?1")
