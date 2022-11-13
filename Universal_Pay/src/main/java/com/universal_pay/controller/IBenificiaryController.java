@@ -26,12 +26,12 @@ public class IBenificiaryController {
 	private IBenificiaryService ibservice;
 	
 	@PostMapping("/addBenificiary")
-	public ResponseEntity<BeneficiaryDetails> registerBenificiary(@RequestBody BeneficiaryDetails bd) throws BenificiaryException{
+	public ResponseEntity<BeneficiaryDetails> registerBenificiary(@Valid @RequestBody BeneficiaryDetails bd) throws BenificiaryException{
 		BeneficiaryDetails benificiary= ibservice.addBenificiary(bd);
 		return new ResponseEntity<>(benificiary,HttpStatus.CREATED);
 	}
 	@DeleteMapping("/deleteBenificiary")
-	public ResponseEntity<BeneficiaryDetails> deleteBenificiary(@RequestBody BeneficiaryDetails bd)throws BenificiaryException{
+	public ResponseEntity<BeneficiaryDetails> deleteBenificiary(@Valid @RequestBody BeneficiaryDetails bd)throws BenificiaryException{
 		BeneficiaryDetails deleteBenificiary=ibservice.deleteBenificiary(bd);
 		return new ResponseEntity<>(deleteBenificiary,HttpStatus.OK);
 	}
