@@ -1,5 +1,6 @@
 package com.universal_pay.controller;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.Valid;
@@ -44,10 +45,10 @@ public class BankAccountController {
 		
 	}
 	
-	@GetMapping("/bankaccounts")
-	public ResponseEntity<Set<BankAccount>> viewAllAccountsHandler(@RequestBody Wallet wallet) throws WalletException{
-		Set<BankAccount> accounts = aService.viewAllAccounts(wallet);
-		return new ResponseEntity<Set<BankAccount>>(accounts,HttpStatus.OK);
+	@PostMapping("/bankaccounts")
+	public ResponseEntity<List<BankAccount>> viewAllAccountsHandler(@RequestBody Wallet wallet) throws WalletException{
+		List<BankAccount> accounts = aService.viewAllAccounts(wallet);
+		return new ResponseEntity<List<BankAccount>>(accounts,HttpStatus.OK);
 	}
 	
 	

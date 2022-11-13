@@ -15,6 +15,7 @@ public class BeneficiaryDetails {
 	
 
 	@Id
+	@NotNull
 	private String mobileNumber;
 	
 	
@@ -22,6 +23,7 @@ public class BeneficiaryDetails {
 	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
+	@NotNull
 	Wallet wallet;
 	
 	public BeneficiaryDetails() {

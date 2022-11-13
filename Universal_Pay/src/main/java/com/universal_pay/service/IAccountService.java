@@ -16,7 +16,7 @@ public interface IAccountService {
 	
 //	public BankAccount viewAccount(Wallet wallet) throws WalletException;
 	
-	public Set<BankAccount> viewAllAccounts(Wallet wallet) throws WalletException;
+	public List<BankAccount> viewAllAccounts(Wallet wallet) throws WalletException;
 	
 
 }
