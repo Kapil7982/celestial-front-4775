@@ -80,12 +80,12 @@ public class IAccountServiceImpl implements IAccountService{
 	}
 
 	@Override
-	public Set<BankAccount> viewAllAccounts(Wallet wallet) throws WalletException {
+	public List<BankAccount> viewAllAccounts(Wallet wallet) throws WalletException {
 		Optional<Wallet> w = wRepo.findById(wallet.getWalletId());
 		
 		if(w.isPresent()) {
 			
-			return (Set<BankAccount>) w.get().getBankAccounts();
+			return (List<BankAccount>) w.get().getBankAccounts();
 			
 		}else {
 			throw new WalletException("Invalid wallet id..");
