@@ -3,6 +3,7 @@ package com.universal_pay.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,9 +11,13 @@ import org.springframework.stereotype.Service;
 import com.universal_pay.model.Transaction;
 import com.universal_pay.model.Wallet;
 import com.universal_pay.repo.ITransactionRepository;
+import com.universal_pay.repo.WalletRepository;
 
 @Service("ITransactionService")
 public class ITransactionServiceImpl implements ITransactionService{
+	
+	@Autowired
+	private WalletRepository wRepo;
 	
 	@Autowired
 	ITransactionRepository iTransactionRepository;
@@ -24,8 +29,18 @@ public class ITransactionServiceImpl implements ITransactionService{
 	}
 
 	@Override
-	public List<Transaction> viewAllTransactions(Wallet wallet) throws Exception {
-		return wallet.getTranscations();
+	public List<Transaction> viewAllTransactionsByWalletId(Integer walletId) throws Exception {
+//		return wallet.getTranscations();
+		
+		 Optional<Wallet> w = wRepo.findById(walletId);
+		 
+		 if(w.isEmpty()) {
+			 
+			throw new Exception("no Wallet found..");
+		 }
+		 Wallet wallet = w.get();
+		 return wallet.getTranscations();
+		
 	}
 
 	@Override

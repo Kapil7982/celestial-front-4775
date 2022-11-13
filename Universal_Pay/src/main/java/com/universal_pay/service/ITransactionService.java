@@ -9,7 +9,7 @@ import com.universal_pay.model.Wallet;
 public interface ITransactionService {
 
 	public Transaction addTransaction (Transaction tran) throws Exception;
-	public List<Transaction> viewAllTransactions (Wallet wallet) throws Exception;
+	public List<Transaction> viewAllTransactionsByWalletId(Integer walletId) throws Exception;
 	public List<Transaction> viewTransactionsByDate(LocalDate from,LocalDate to) throws Exception;
 	public List<Transaction> viewAllTransactions(String type) throws Exception;
 }

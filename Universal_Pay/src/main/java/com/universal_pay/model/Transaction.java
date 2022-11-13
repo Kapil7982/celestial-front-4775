@@ -2,7 +2,7 @@ package com.universal_pay.model;
 
 import java.time.LocalDate;
 
-
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /*
 
@@ -33,8 +35,9 @@ public class Transaction {
 	private String transactionType;
 	private LocalDate transactionDate;
 	
-	@ManyToOne(fetch = FetchType.LAZY )
+	@ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY )
 	@JoinColumn(name = "wallet_id", referencedColumnName = "walletId")
+	@JsonIgnore
 	private Wallet wallet;
 	
 	private double amount;

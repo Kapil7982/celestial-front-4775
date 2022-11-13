@@ -35,9 +35,9 @@ public class TranscationController {
 		return iTransactionService.addTransaction(tran);
 	}
 	
-	@GetMapping("/viewAllTransactions")
-	public List<Transaction> viewAllTransactions (@RequestBody Wallet wallet) throws Exception{
-		return iTransactionService.viewAllTransactions(wallet);
+	@GetMapping("/viewAllTransactionsbyid/{walletId}")
+	public List<Transaction> viewAllTransactionsHandler(@PathVariable("walletId") Integer walletId) throws Exception{
+		return iTransactionService.viewAllTransactionsByWalletId(walletId);
 	}
 	
 	@GetMapping("/viewTransactionsByDate/{from}/{to}")	
