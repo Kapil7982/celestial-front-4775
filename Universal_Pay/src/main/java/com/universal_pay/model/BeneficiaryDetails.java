@@ -21,7 +21,7 @@ public class BeneficiaryDetails {
 	private String name;
 	
 	
-	@ManyToOne(cascade = CascadeType.MERGE)
+	@ManyToOne(cascade = CascadeType.ALL)
 	Wallet wallet;
 	
 	public BeneficiaryDetails() {
