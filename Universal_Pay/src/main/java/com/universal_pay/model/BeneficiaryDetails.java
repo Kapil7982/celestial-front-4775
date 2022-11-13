@@ -6,15 +6,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.ManyToAny;
 
 @Entity
 public class BeneficiaryDetails {
 	
-//	private Integer beneficiaryId;
+
 	@Id
 	private String mobileNumber;
+	
+	
 	private String name;
 	
 	
@@ -25,23 +28,17 @@ public class BeneficiaryDetails {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public BeneficiaryDetails(String mobileNumber, String name, int beneficiaryId, Wallet wallet) {
+
+
+	public BeneficiaryDetails(String mobileNumber, String name, Wallet wallet) {
 		super();
 		this.mobileNumber = mobileNumber;
 		this.name = name;
-//		this.beneficiaryId = beneficiaryId;
 		this.wallet = wallet;
 	}
 
 	
-	
-//	public int getBeneficiaryId() {
-//		return beneficiaryId;
-//	}
-//
-//	public void setBeneficiaryId(int beneficiaryId) {
-//		this.beneficiaryId = beneficiaryId;
-//	}
+
 
 	public String getMobileNumber() {
 		return mobileNumber;
@@ -67,10 +64,14 @@ public class BeneficiaryDetails {
 		this.wallet = wallet;
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "BeneficiaryDetails [mobileNumber=" + mobileNumber + ", name=" + name + ", beneficiaryId=" + "]";
+		return "BeneficiaryDetails [mobileNumber=" + mobileNumber + ", name=" + name + ", wallet=" + wallet + "]";
 	}
+
+	
 	
 	
 }

@@ -22,35 +22,27 @@ public class IBenificiaryServiceImpl implements IBenificiaryService{
 
 	@Override
 	public BeneficiaryDetails addBenificiary(BeneficiaryDetails bd) throws BenificiaryException{
-		Wallet wallet = bd.getWallet();
-		List<BeneficiaryDetails> list= wallet.getBenificiaryDetails();
-		if(list.contains(bd)) {
-			throw new BenificiaryException("Benificiary with this mobile number already exist");
+		if(ibRepo.findById(bd.getMobileNumber()).isEmpty()) {
+			
+			Wallet wallet = bd.getWallet();
+			wallet.getBenificiaryDetails().add(bd);
+		    return ibRepo.save(bd);
 		}else {
-			list.add(bd);
-			wallet.setBenificiaryDetails(list);
-			walletRepo.save(wallet);
-			return bd;
-		}
+				throw new BenificiaryException("Beneficiary already exists");
+			}
 		
 	}
 
 	@Override
 	public BeneficiaryDetails deleteBenificiary(BeneficiaryDetails bd) throws BenificiaryException {
-		Wallet wallet = bd.getWallet();
-		List<BeneficiaryDetails> list= wallet.getBenificiaryDetails();
-		List<BeneficiaryDetails> newList= new ArrayList<>();
-		if(list.contains(bd)) {
-			for(BeneficiaryDetails benificiaryDetails : list) {
-				if(bd.getMobileNumber().equals(benificiaryDetails.getMobileNumber())) {
-					continue;
-				}else {
-					newList.add(benificiaryDetails);
-				}
-			}
-			wallet.setBenificiaryDetails(newList);
-			walletRepo.save(wallet);
-			return bd;
+		Optional<BeneficiaryDetails> benificiaryDetails= ibRepo.findById(bd.getMobileNumber());
+		if(benificiaryDetails.isPresent()) {
+			BeneficiaryDetails b= benificiaryDetails.get();
+			Wallet w= bd.getWallet();
+			List<BeneficiaryDetails> list=w.getBenificiaryDetails();
+			list.remove(bd);
+			ibRepo.delete(b);
+			return b;
 		}else {
 			throw new BenificiaryException("Benificiary with this mobile number do not exist");
 		}
@@ -58,21 +50,20 @@ public class IBenificiaryServiceImpl implements IBenificiaryService{
 
 	@Override
 	public BeneficiaryDetails viewBenificiary(String  mob) throws BenificiaryException{
-		//To make this method working we need to make mobileNumber as ID in our BenificiaryDetails class then we will
-		//get our BenificiaryDetails object
-		Optional<BeneficiaryDetails> opt= ibRepo.findById(mob);
-		if(opt.isPresent()) {
-			return opt.get();
+		Optional<BeneficiaryDetails> benificiaryDetails= ibRepo.findById(mob);
+		if(benificiaryDetails.isPresent()) {
+			return benificiaryDetails.get();
 		}else {
-			throw new BenificiaryException("No benificial is added with this mobile number");
+			throw new BenificiaryException("No benificiary register with this mobile number");
 		}
 	}
 
 	@Override
 	public List<BeneficiaryDetails> viewAllBeneficiary(Customer customer) {
-		Wallet wallet= customer.getWallet();
-		List<BeneficiaryDetails> beneficiaryDetails= wallet.getBenificiaryDetails();
-		return beneficiaryDetails;
+		Integer id= customer.getWallet().getWalletId();
+		Optional<Wallet> opt= walletRepo.findById(id);
+		Wallet wallet= opt.get();
+		return wallet.getBenificiaryDetails();
 	}
 
 }
