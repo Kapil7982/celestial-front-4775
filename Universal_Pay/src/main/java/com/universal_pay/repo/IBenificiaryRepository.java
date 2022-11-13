@@ -5,6 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import com.universal_pay.model.BeneficiaryDetails;
 @Repository
-public interface IBenificiaryRepository extends JpaRepository<BeneficiaryDetails, String>{
+public interface IBenificiaryRepository extends JpaRepository<BeneficiaryDetails,String>{
 
 }
