@@ -11,11 +11,7 @@ public class BeneficiaryDetails {
 	
 
 	@Id
-<<<<<<< HEAD
 //	@Size(min = 8,max = 12)
-=======
-	@NotNull
->>>>>>> 0d423d8a99f3ea4c66be3e436c628a252c268fb6
 	private String mobileNumber;
 	
 	
@@ -23,12 +19,7 @@ public class BeneficiaryDetails {
 	
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-<<<<<<< HEAD
 	private Wallet wallet;
-=======
-	@NotNull
-	Wallet wallet;
->>>>>>> 0d423d8a99f3ea4c66be3e436c628a252c268fb6
 	
 	public BeneficiaryDetails() {
 		// TODO Auto-generated constructor stub
