@@ -1,7 +1,7 @@
 # Online Payment Wallet Application REST-API
 Our team has created REST API Application for online payment wallet application which can be used by bank's customers for different services like create bank account, login and SignUp to account, create wallet from bank account, add money to wallet, Billpayment from wallet, get transaction details from wallet etc.
 
-## This is a collaborative project, completed by a team of 6 backend developers at Masai School.
+## This is a collaborative project, completed by a team of 5 backend developers.
 
 ## Collaborators
  - [Kapil](https://github.com/Kapil7982)
@@ -91,6 +91,8 @@ spring.datasource.password=port
 2.  User can see the transaction details with wallet user.
 3. User can see all the transaction details.
 
+## ER Diagram
+![image](https://user-images.githubusercontent.com/103938868/201588137-5c603047-820c-4038-83bc-eece7e7cda42.png)
 
 
 
