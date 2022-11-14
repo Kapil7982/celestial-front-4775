@@ -75,9 +75,20 @@ spring.datasource.password=port
 2.  Customer can update the details with bank.
 
 - #### Wallet features
-1.  User can seen the wallet balance.
+
+1.  User can create account in the wallet.
 2.  User can add the money to the wallet.
 3.  User can transfer the money from wallet.
+4.  User can seen the wallet balance.
+5.  User can deposit amount in the wallet.
+6.  User can seen the list of customer.
+
+- #### Bill payment features
+1.  User can add the new benificiary.
+2.  User can delete the benificiary.
+3.  User can view the particular benificiary.
+4.  User can view all the benificiary
+
 
 - #### Bill payment features
 1.  User can pay any bill from wallet.
