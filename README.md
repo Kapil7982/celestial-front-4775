@@ -54,7 +54,7 @@ Install and connect with database
 
 ```bash
 #db specific properties
-spring.datasource.url=jdbc:mysql://localhost:3306/upay
+spring.datasource.url=jdbc:mysql://localhost:8888/upay
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.datasource.username=root
 spring.datasource.password=port
@@ -82,9 +82,6 @@ spring.datasource.password=port
 - #### Bill payment features
 1.  User can pay any bill from wallet.
 2.  User can get all bills details.
-
-- #### Cashback features
-1.  User can get the cashback whenever they pay the bills in range of 5% to 25%.
 
 - #### Transaction features
 1.  User can seen the transaction details with date wise.
