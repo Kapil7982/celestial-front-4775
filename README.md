@@ -83,7 +83,7 @@ spring.datasource.password=port
 5.  User can deposit amount in the wallet.
 6.  User can seen the list of customer.
 
-- #### Bill payment features
+- #### Beneficiary features
 1.  User can add the new benificiary.
 2.  User can delete the benificiary.
 3.  User can view the particular benificiary.
