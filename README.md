@@ -18,7 +18,6 @@ Our team has created REST API Application for online payment wallet application 
 - Money Transfer from one wallet to another wallet.
 - Any Bill payments from wallet.
 - User can see transactions details from wallet.
-- CashBack Section.
 
 ## Tech Stack
 - Java
@@ -42,7 +41,6 @@ Our contribution to Project-
 - Customer
 - Wallet
 - Bill Payment
-- Cashback
 - Transactions
 - Beneficiary
 
