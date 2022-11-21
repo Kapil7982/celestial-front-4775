@@ -13,17 +13,6 @@ import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-/*
-
-
-{
-"transactionId" : "2380",
-"transactionType" : "shopping"
-
-}
-
-
-*/
 
 @Entity
 public class Transaction {

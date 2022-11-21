@@ -29,7 +29,7 @@ public class BankAccount {
 	private String bankName;
 	private Double balance;
 	
-//	@JsonIgnore
+	@JsonIgnore
 	@ManyToOne(cascade = CascadeType.MERGE)
 	private Wallet wallet;
 	
