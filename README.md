@@ -29,8 +29,8 @@ Our team has created REST API Application for online payment wallet application 
 - Swagger UI
 
 Our contribution to Project-
-* Kapil-> Wallet Module 
-* Amar Sarkar-> Customer, Bank Module
+* Kapil-> Mapping tables and Wallet Module 
+* Amar Sarkar-> Customer and Bank Module
 * Ashirvad kumar-> Beneficiary
 * Rajat Santra-> BillPayment
 * Himanshu Rajput -> Transaction
